@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lista de Pessoas</title>
+</head>
+<body>
+
+	<h1>Lista de Pessoas</h1>
+	<table>
+		<tr>
+			<th>Nome</th>
+			<th>Endereço</th>
+			<th>Métodos</th>
+		</tr>
+		{%for pessoa in lista:%}
+			<tr>
+				<td>{{pessoa.nome}}</td>
+				<td>{{pessoa.endereco}}</td>
+				<td>
+					<form action="/deletar_pessoa" method="POST">
+						<input type="hidden" name="nome" value="{{pessoa.nome}}"/>
+						<input type="hidden" name="endereco" value="{{pessoa.endereco}}"/>
+						<input type="submit" name="remover" value="Remover">
+					</form>
+					<form action="/form_alterar_pessoa" method="POST">
+						<input type="hidden" name="nome" value="{{pessoa.nome}}"/>
+						<input type="hidden" name="endereco" value="{{pessoa.endereco}}"/>
+						<input type="submit" name="alterar" value="Alterar">
+					</form>
+				</td>
+			</tr>
+		{%endfor%}
+	</table>
+	<br>
+	<a href="/">Voltar</a>
+
+</body>
+</html>
